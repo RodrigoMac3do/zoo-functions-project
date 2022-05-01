@@ -1,5 +1,10 @@
 const data = require('../data/zoo_data');
 
+// const { species: empregados } = data;
+// const [{ residents }] = empregados;
+// const [{ age }] = residents;
+// console.log(age);
+
 function isManager(id) {
   let gerente = false;
   data.employees.forEach((employee) => {
