@@ -3,7 +3,14 @@ const data = require('../data/zoo_data');
 const semParametro = {
   Tuesday: {
     officeHour: 'Open from 8am until 6pm',
-    exhibition: ['lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes'],
+    exhibition: [
+      'lions',
+      'tigers',
+      'bears',
+      'penguins',
+      'elephants',
+      'giraffes',
+    ],
   },
   Wednesday: {
     officeHour: 'Open from 8am until 6pm',
@@ -15,15 +22,26 @@ const semParametro = {
   },
   Friday: {
     officeHour: 'Open from 10am until 8pm',
-    exhibition: ['tigers', 'otters', 'frogs', 'snakes', 'elephants', 'giraffes'],
+    exhibition: [
+      'tigers',
+      'otters',
+      'frogs',
+      'snakes',
+      'elephants',
+      'giraffes',
+    ],
   },
   Saturday: {
     officeHour: 'Open from 8am until 10pm',
     exhibition: [
-      'lions', 'tigers',
-      'bears', 'penguins',
-      'otters', 'frogs',
-      'snakes', 'elephants',
+      'lions',
+      'tigers',
+      'bears',
+      'penguins',
+      'otters',
+      'frogs',
+      'snakes',
+      'elephants',
     ],
   },
   Sunday: {
@@ -37,16 +55,16 @@ const semParametro = {
 };
 const dias = Object.keys(data.hours);
 const animais = data.species.map((specie) => specie.name);
-const diasDisponiveis = (animal) => data.species
-  .filter((specie) => specie.name === animal)[0].availability;
+const diasDisponiveis = (animal) =>
+  data.species.filter((specie) => specie.name === animal)[0].availability;
 
 function getSchedule(scheduleTarget) {
-  if (dias.includes(scheduleTarget)) return { [scheduleTarget]: semParametro[scheduleTarget] };
+  if (dias.includes(scheduleTarget)) {
+    return { [scheduleTarget]: semParametro[scheduleTarget] };
+  }
   if (animais.includes(scheduleTarget)) return diasDisponiveis(scheduleTarget);
   return semParametro;
 }
-
-console.log(getSchedule('lions'));
 
 module.exports = getSchedule;
 

@@ -1,10 +1,5 @@
 const data = require('../data/zoo_data');
 
-// const { species: empregados } = data;
-// const [{ residents }] = empregados;
-// const [{ age }] = residents;
-// console.log(age);
-
 function isManager(id) {
   let gerente = false;
   data.employees.forEach((employee) => {
@@ -24,8 +19,6 @@ function getRelatedEmployees(managerId) {
   }
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
-
-// console.log(getRelatedEmployees('fdb2543b-5662-46a7-badc-93d9600a8'));
 
 module.exports = {
   isManager,

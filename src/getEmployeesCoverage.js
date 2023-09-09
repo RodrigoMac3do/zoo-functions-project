@@ -2,9 +2,12 @@ const data = require('../data/zoo_data');
 const getSpeciesByIds = require('./getSpeciesByIds');
 
 function procuraId(pessoa) {
-  const empregado = data.employees
-    .find((employee) => employee
-      .id === pessoa || employee.firstName === pessoa || employee.lastName === pessoa);
+  const empregado = data.employees.find(
+    (employee) =>
+      employee.id === pessoa
+      || employee.firstName === pessoa
+      || employee.lastName === pessoa,
+  );
   return empregado;
 }
 
@@ -28,12 +31,7 @@ function semArgumento() {
 function retornaObjeto(obj) {
   const primeiroObj = Object.values(obj)[0];
   const primeiroNome = procuraId(primeiroObj);
-  const {
-    firstName,
-    lastName,
-    id,
-    responsibleFor,
-  } = primeiroNome;
+  const { firstName, lastName, id, responsibleFor } = primeiroNome;
 
   const novoArray = {
     id,
@@ -48,12 +46,20 @@ function retornaObjeto(obj) {
 function getEmployeesCoverage(obj) {
   if (!obj) return semArgumento();
   const primeiroObj = Object.values(obj)[0];
-  if (data.employees.some((employee) => employee.id === primeiroObj
-  || employee.firstName === primeiroObj || employee.lastName === primeiroObj)) {
+  if (
+    data.employees.some(
+      (employee) =>
+        employee.id === primeiroObj
+        || employee.firstName === primeiroObj
+        || employee.lastName === primeiroObj,
+    )
+  ) {
     return retornaObjeto(obj);
   }
   throw new Error('Informações inválidas');
 }
-console.log(getEmployeesCoverage({ id: 'c1f50212-35a6-4ecd-8223-f835538526c2' }));
+console.log(
+  getEmployeesCoverage({ id: 'c1f50212-35a6-4ecd-8223-f835538526c2' }),
+);
 
 module.exports = getEmployeesCoverage;

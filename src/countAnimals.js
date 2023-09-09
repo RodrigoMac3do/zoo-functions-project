@@ -7,18 +7,15 @@ function countAnimals(animal) {
       return acc;
     }, {});
   }
-  const dadosAnimal = data.species
-    .find((specie) => specie.name === Object.values(animal)[0]);
+  const dadosAnimal = data.species.find(
+    (specie) => specie.name === Object.values(animal)[0],
+  );
   if (Object.keys(animal)[1]) {
-    return dadosAnimal.residents
-      .filter((dadoSex) => dadoSex.sex === Object.values(animal)[1]).length;
+    return dadosAnimal.residents.filter(
+      (dadoSex) => dadoSex.sex === Object.values(animal)[1],
+    ).length;
   }
   return dadosAnimal.residents.length;
 }
-
-// countAnimals({
-//   specie: 'elephants',
-//   sex: 'male',
-// });
 
 module.exports = countAnimals;
